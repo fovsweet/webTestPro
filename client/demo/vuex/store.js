@@ -1,67 +1,54 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import plugins from './middleware'
+import middlewares from './middleware'
 
 Vue.use(Vuex)
 
+export const STORAGE_KEY = 'todos-vuejs'
+
+// for testing
+if (navigator.userAgent.indexOf('PhantomJS') > -1) {
+  localStorage.clear()
+}
+
 const state = {
-   modalShow : false,
-   modalTitle:'',
-   editShow : false,
-   storeShow : false,
-   deletShow : false,
-   openOrShow : '',
-   itemInfo : {
-      id:'',
-      state:''
-   },
-   modalType:[
-      {type:'0',text:'修改配置'},
-      {type:'1',text:'提示'},
-      {type:'2',text:'编辑规则'},
-      {type:'3',text:'新增规则'},
-      {type:'4',text:'指定门店'},
-   ]
+  todos: JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')
 }
 
 const mutations = {
-   MODAL_SHOW(state,type){
-      state.modalShow = !state.modalShow;
-      if (type===undefined) {
-         state.modalTitle == '';
-      }else{
-         state.modalTitle = state.modalType[type].text;
-      }
-   },
-   ADD_RULES(state,uid){
-      if(uid === undefined){
-         state.modalTitle = state.modalType[3].text;
-         state.editShow = !state.editShow;
-      }else{
-         state.modalTitle = state.modalType[2].text;
-         state.editShow = !state.editShow;
-      }
-   },
-   STORE_MODAL(state){
-      state.storeShow = !state.storeShow;
-      state.modalTitle = state.modalType[4].text;
-   },
-   DELETE_ITEM(state,uid,t){
-      if(t === 0){
-         state.openOrShow = '停用'
-      }
-      if(t === 1){
-         state.openOrShow = '启用'
-      }
-      state.itemInfo.id=uid;
-      state.itemInfo.state=t;
-      state.modalTitle = state.modalType[1].text;
-      state.deletShow = !state.deletShow;
-   }
+  ADD_TODO (state, text) {
+    state.todos.push({
+      text: text,
+      done: false
+    })
+  },
+
+  DELETE_TODO (state, todo) {
+    console.log(todo)
+    state.todos.$remove(todo)
+  },
+
+  TOGGLE_TODO (state, todo) {
+    todo.done = !todo.done
+  },
+
+  EDIT_TODO (state, todo, text) {
+    todo.text = text
+  },
+
+  TOGGLE_ALL (state, done) {
+    state.todos.forEach((todo) => {
+      todo.done = done
+    })
+  },
+
+  CLEAR_COMPLETED (state) {
+    state.todos = state.todos.filter(todo => !todo.done)
+  }
 }
 
 export default new Vuex.Store({
-   state,
-   plugins,
-   mutations
+  state,
+  mutations,
+  middlewares
 })
