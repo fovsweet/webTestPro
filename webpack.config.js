@@ -4,11 +4,18 @@ var path = require('path');
 var publicPath = 'http://localhost:3000/';
 var hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
 
+var examples = [
+  'demo'
+];
+
+var entry = {}
+
+examples.forEach(function (name) {
+  entry[name] = ['./client/'+name+'/main.js', hotMiddlewareScript]
+})
+
 var devConfig = {
-    entry: {
-        page1: ['./client/page1', hotMiddlewareScript],
-        page2: ['./client/page2', hotMiddlewareScript]
-    },
+    entry: entry,
     output: {
         filename: './[name]/bundle.js',
         path: path.resolve(__dirname, './public'),
@@ -22,13 +29,31 @@ var devConfig = {
         }, {
             test: /\.less$/,
             loader: 'style!css?sourceMap!resolve-url!less-loader'
+        },
+        {
+            test: /\.vue$/,
+            loader: 'vue'
+        },
+        {
+            test: /\.js$/,
+            loader: 'babel',
+            exclude: /node_modules|vue\/dist|vue-hot-reload-api|vue-loader/
         }]
     },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin()
-    ]
+    ],
+    vue:{
+        loaders:{
+            css:'style!css!less'
+        }
+    },
+    babel: {
+        presets: ['es2015'],
+        plugins: ['transform-runtime']
+    },
 };
 
 module.exports = devConfig;

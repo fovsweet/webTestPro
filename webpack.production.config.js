@@ -3,8 +3,7 @@ var path = require('path');
 
 var productionConfig = [{
     entry: {
-        page1: './client/page1',
-        page2: './client/page2'
+        demo: './client/demo/main.js',
     },
     output: {
         filename: './[name]/bundle.js',
@@ -18,13 +17,31 @@ var productionConfig = [{
         }, {
             test: /\.less$/,
             loader: ExtractTextPlugin.extract('style', 'css!resolve-url!less-loader')
+        },
+        {
+            test: /\.vue$/,
+            loader: 'vue'
+        },
+        {
+            test: /\.js$/,
+            loader: 'babel',
+            exclude: /node_modules|vue\/dist|vue-hot-reload-api|vue-loader/
         }]
     },
     plugins: [
         new ExtractTextPlugin('./[name]/index.css', {
             allChunks: true
         })
-    ]
+    ],
+    vue:{
+        loaders:{
+            css:'style!css!less'
+        }
+    },
+    babel: {
+        presets: ['es2015'],
+        plugins: ['transform-runtime']
+    },
 }];
 
 module.exports = productionConfig;
