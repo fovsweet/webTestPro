@@ -415,6 +415,8 @@
       </button>
     </footer>
   </section>
+    <input type="button" name="" value="test" @click='getInfo()'>
+
 </template>
 
 <script>
@@ -465,6 +467,15 @@ export default {
         this.addTodo(text)
       }
       e.target.value = ''
+    },
+    getInfo(){
+      this.$http.post('/api').then((res) => {
+    // success callback
+        console.log(res)
+      }, (res) => {
+        // error callback
+        console.log(res)
+      })
     }
   }
 }

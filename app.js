@@ -1,6 +1,7 @@
 var express = require('express'),
     path = require('path'),
-    consolidate = require('consolidate');
+    consolidate = require('consolidate'),
+    proxy = require('http-proxy-middleware');;
 
 var isDev = process.env.NODE_ENV !== 'production';
 var app = express();
