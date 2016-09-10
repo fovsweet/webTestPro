@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>供应商档案</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="../css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../css/common.css">
+</head>
+<style type="text/css">
+	/*显示叉叉*/
+	.layui-layer-setwin .layui-layer-close1{
+		display: inline-block;
+	}
+</style>
+<body>
+<!--头部栏 start-->
+<div class="header header-fixed-top">
+	<a href="" class="header-logo">
+		 <span class="logo"></span> 我的经管
+	</a>
+	<div class="header-title header-wh"></div>
+	
+	<div class="header-bar header-wh" id="head-bar">
+		<!--此处会渲染头部菜单-->
+	</div>
+	<div class="user-info">
+		<img src="../images/logo.png" alt="" />
+		<span>天下第一</span>
+	</div>
+</div>
+<!--头部栏 end-->
+<div class="full-box pdlr-0">
+	<header class="full-header">
+		<h2>供应商档案</h2>
+		<div class="flex">
+			<div class="wd30 textleft">
+				<a class="btn-def" href="javascript:;">打印</a>
+			</div>
+			<div class="wd70 textright">
+				<a class="btn-def change" href="javascript:;">修改</a>
+				<a class="btn-def" href="javascript:;">删除</a>
+			</div>
+		</div>
+	</header>
+	<div class="content">
+		<div class="show-group form-group info-group">
+			<div class="search-inb">
+				<label>供应商分类:</label>
+				<p>成品</p>
+			</div>
+			<div class="search-inb">
+				<label>供应商名称:</label>
+				<p>玲珑皮具</p>
+			</div>
+			<div class="search-inb">
+				<label>跟单员:</label>
+				<p>韦小宝</p>
+			</div>
+			<div class="search-inb">
+				<label>地区:</label>
+				<p>深圳-南山区</p>
+			</div>
+			<div class="search-inb block">
+				<label>币种:</label>
+				<p>人民币 RMB / 美元 USD / 港币 HKD</p>
+			</div>
+		</div>
+		<div class="hide-group form-group none">
+			<div class="search-inb">
+				<label>供应商分类:</label>
+				<div class="s-input">
+					<input type="text" name="">
+					<i class="icon-search r1"></i>
+				</div>
+			</div>
+			<div class="search-inb">
+				<label>供应商名称:</label>
+				<div class="s-input">
+					<input type="text" name="">
+					<i class="icon-search r1"></i>
+				</div>
+			</div>
+			<div class="search-inb">
+				<label>跟单员:</label>
+				<div class="s-input">
+					<input type="text" name="">
+					<i class="icon-search r1"></i>
+				</div>
+			</div>
+			<div class="search-inb">
+				<label>地区:</label>
+				<div class="s-input">
+					<input type="text" name="">
+					<i class="icon-search r1"></i>
+				</div>
+			</div>
+			<div class="search-inb block">
+				<label>币种:</label>
+				<div class="btn-group">
+					
+				</div>
+				<a class="icon-addmore ml-10" href="javascript:;"></a>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src='../js/jquery-3.1.0.js'></script>
+<script type="text/javascript">
+	// 点击修改按钮事件
+	$('.change').on('click',function(){
+		if($('.hide-group').hasClass('none')){
+			$(this).html('保存')
+			$('.show-group').addClass('none')
+			$('.hide-group').removeClass('none');
+			copyVal('.info-group')
+		}else{
+			$(this).html('修改')
+			$('.show-group').removeClass('none')
+			$('.hide-group').addClass('none')
+		}
+	})
+
+	// 点击修改赋值方法
+	function copyVal(dom){
+		var n = $(dom).find('p');
+		$(n).each(function(i){
+			if(i === n.length-1){
+				$('.btn-group').html('');
+				$($(this).html().split('/')).each(function(g){
+					$('.btn-group').append('<a href="javascript:;" class="btn-def">'+this+'<i onclick="removeMon(this)" class="icon-close ml0"></></a>')
+				});
+				$('.btn-def').on('click',function(){
+					$(this).toggleClass('chk')
+				})
+				// removeMon方法是移除币种单个类的方法
+				return false;
+			}
+			$('.hide-group').find('input').eq(i).val($(this).html());
+		})
+	}
+
+	// 该方法是移除币种单个类
+	function removeMon(dom){
+		$(dom).parent().remove();
+	}
+</script>
+</html>

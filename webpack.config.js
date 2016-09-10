@@ -5,7 +5,7 @@ var publicPath = 'http://localhost:3000/';
 var hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
 
 var examples = [
-  'demo'
+  'demo','yjWork'
 ];
 
 var entry = {}
@@ -38,13 +38,25 @@ var devConfig = {
             test: /\.js$/,
             loader: 'babel',
             exclude: /node_modules|vue\/dist|vue-hot-reload-api|vue-loader/
-        }]
+        },
+        {
+            test: /\.(svg|ttf|eot|woff|woff2)$/,
+            loader: 'file-loader?name=fonts/[name].[ext]'
+        },]
     },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
+        new webpack.NoErrorsPlugin(),
     ],
+    externals: {
+        jquery: 'window.$'
+    },
+    resolve: {
+        alias: {
+            jquery: "jquery/src/jquery"
+        }
+    },
     vue:{
         loaders:{
             css:'style!css!less'

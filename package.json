@@ -36,6 +36,8 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "http-proxy-middleware": "^0.17.1",
+    "jquery": "^3.1.0",
+    "layer": "^0.1.0",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "node-less": "^1.0.0",

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>供应商档案</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="../css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../css/common.css">
+</head>
+<style type="text/css">
+	/*如果弹框没有表头，则加上以下两个css start*/
+	.layui-layer-title{
+		height:0!important;
+	}
+	.layui-layer-setwin .layui-layer-close1{
+		display: none
+	}
+	/*如果弹框没有表头，则加上以下两个css end*/
+</style>
+<body>
+<!--头部栏 start-->
+<div class="header header-fixed-top">
+	<a href="" class="header-logo">
+		 <span class="logo"></span> 我的经管
+	</a>
+	<div class="header-title header-wh"></div>
+	
+	<div class="header-bar header-wh" id="head-bar">
+		<!--此处会渲染头部菜单-->
+	</div>
+	<div class="user-info">
+		<img src="../images/logo.png" alt="" />
+		<span>天下第一</span>
+	</div>
+</div>
+<!--头部栏 end-->
+<div class="full-box pdlr-0">
+	<header class="full-header">
+		<h2>入库单</h2>
+		<div class="flex">
+			<div class="wd30 textleft">
+				<a class="btn-def" href="javascript:;">打印</a>
+			</div>
+			<div class="wd70 textright">
+				<a class="btn-def change" href="javascript:;">修改</a>
+				<a class="btn-def" href="javascript:;">删除</a>
+			</div>
+		</div>
+	</header>
+	<div class="content">
+		<div class="info-group form-group">
+			<div class="search-inb">
+				<label>入库单号：</label>
+				<p>IBP201607120017</p>
+			</div>
+			<div class="search-inb">
+				<label>仓库：</label>
+				<div class="s-input">
+					<input type="text" disabled="disabled" class="sinputable disabled ml0" value="原仓库">
+					<i class="sicon icon-close r2 none"></i>
+					<i class="sicon icon-search r1 none"></i>
+				</div>
+			</div>
+			<table class="table-list">
+				<thead>
+					<tr>
+						<th>序号</th>
+						<th>采购单号</th>
+						<th>存货编码</th>
+						<th>存货名称</th>
+						<th>规格型号</th>
+						<th>单位</th>
+						<th>数量</th>
+						<th>交期</th>
+						<th width="200"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td><input type="text" disabled="disabled" class="disabled abled textcenter backgray" value="PO201606120001"></td>
+						<td>BGJ-0001</td>
+						<td>铜版纸</td>
+						<td>120g</td>
+						<td>m2</td>
+						<td><input type="text" disabled="disabled" class="disabled abled wd100 textcenter backgray" value="100"></td>
+						<td>2016-09-09</td>
+						<td class="textright"><a href="javascript:;" class="sicon icon-close none"></a></td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>PO201606120001</td>
+						<td>BGJ-0001</td>
+						<td>铜版纸</td>
+						<td>120g</td>
+						<td>m2</td>
+						<td><input type="text" disabled="disabled" class="disabled abled wd100 textcenter backgray" value="100"></td>
+						<td><input type="text" disabled="disabled" class="disabled abled textcenter backgray" value="2016-09-09"></td>
+						<td class="textright"><a href="javascript:;" class="sicon icon-close none"></a></td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>PO201606120001</td>
+						<td>BGJ-0001</td>
+						<td>铜版纸</td>
+						<td>120g</td>
+						<td>m2</td>
+						<td><input type="text" disabled="disabled" class="disabled abled wd100 textcenter backgray" value="100"></td>
+						<td><input type="text" disabled="disabled" class="disabled abled textcenter backgray" value="2016-09-09"></td>
+						<td class="textright"><a href="javascript:;" class="sicon icon-close none"></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src='../js/jquery-3.1.0.js'></script>
+<script type="text/javascript">
+	$('.change').on('click',function(){
+		if($(this).html()=='修改'){
+			$(this).html('保存')
+			$('.abled,.sinputable').attr('disabled',false).removeClass('disabled');
+			$('.sicon').removeClass('none');
+		}else{
+			$(this).html('修改')
+			$('.abled,.sinputable').attr('disabled',true).addClass('disabled');
+			$('.sicon').addClass('none');
+		}
+	})
+</script>
+</html>

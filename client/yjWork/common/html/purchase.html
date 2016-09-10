@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>采购代收</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="../css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../css/common.css">
+</head>
+<style type="text/css">
+/*显示叉叉*/
+	.layui-layer-setwin .layui-layer-close1{
+		display: inline-block;
+	}
+</style>
+<body>
+<!--头部栏 start-->
+<div class="header header-fixed-top">
+	<a href="" class="header-logo">
+		 <span class="logo"></span> 我的经管
+	</a>
+	<div class="header-title header-wh">
+	</div>
+	
+	<div class="header-bar header-wh" id="head-bar">
+		<!--此处会渲染头部菜单-->
+	</div>
+	<div class="user-info">
+		<img src="../images/logo.png" alt="" />
+		<span>天下第一</span>
+	</div>
+</div>
+<!--头部栏 end-->
+
+<!--左边导航 start-->
+<div class="navbar">
+	<div class="date-time">
+		<span class="date">2016.08.23 </span><span class="week">星期六</span>
+		<span class="go-left icon-angle-left"></span>
+	</div>
+	<div class="navbar-wrap">
+		<div class="navbar-list" id="nav-list">
+			<!--此处会渲染菜单数据-->
+		</div>
+	</div>
+</div>
+<!--左边导航 end-->
+
+<div class="nav-box">
+	<div class="content flex">
+		<div class="left_list">
+			<div class="list_header flex">
+				<div class="wd30 textleft">
+					<a href="javascript:;" class="btn-def">
+						新增
+						<i class="sp-add">+</i>
+					</a>
+				</div>
+				<div class="wd70 textright">
+					<a href="javascript:;" class="btn-def icon-fresh">刷新</a>
+					<a id="fresh" href="javascript:;" class="btn-def icon-down ml-10">筛选</a>	
+				</div>
+			</div>
+			<div>
+				<ul class="list_float">
+					<li><a href="javascript:;">阿里巴巴</a></li>
+					<li class="ckd"><a href="javascript:;">华为</a></li>
+					<li><a href="javascript:;">京东</a></li>
+					<li><a href="javascript:;">腾讯</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="right_list">
+			<div class="list_header flex-right">
+				<a href="javascript:;" class="btn-def">收货</a>
+			</div>
+			<div class="overflow-box">
+				<table class="table-list">
+					<thead>
+						<tr>
+							<th><a href="javascript:;" class="png-option"></a></th>
+							<th>存货编码</th>
+							<th>存货名称</th>
+							<th>规格型号</th>
+							<th>单位</th>
+							<th>数量</th>
+							<th>交期</th>
+							<th>采购单号</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><a href="javascript:;" class="png-option"></a></td>
+							<td>BGJ-0001</td>
+							<td>铜版纸</td>
+							<td>120g</td>
+							<td>m2</td>
+							<td>100</td>
+							<td>2016-09-09</td>
+							<td>PO201606120001</td>
+						</tr>
+						<tr>
+							<td><a href="javascript:;" class="png-option"></a></td>
+							<td>BGJ-0001</td>
+							<td>铜版纸</td>
+							<td>120g</td>
+							<td>m2</td>
+							<td>100</td>
+							<td>2016-09-09</td>
+							<td>PO201606120001</td>
+						</tr>
+						<tr>
+							<td><a href="javascript:;" class="png-option"></a></td>
+							<td>BGJ-0001</td>
+							<td>铜版纸</td>
+							<td>120g</td>
+							<td>m2</td>
+							<td>100</td>
+							<td>2016-09-09</td>
+							<td>PO201606120001</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="choice" class="pd10" style="display:none">
+	<div class="form-group">
+		<div class="search-dialog">
+			<label>客户：</label>
+			<div class="s-input">
+				<input type="text" name="">
+				<i class="icon-search r1"></i>
+			</div>
+			<label>单号：</label>
+			<input type="text" name="">
+			<label>产品编码：</label>
+			<input type="text" name="">
+			<label>产品名称：</label>
+			<input type="text" name="">
+			<label>规格型号：</label>
+			<input type="text" name="">
+			<label>交期：</label>
+			<select class="wd-110"></select>
+			<span class="mglr-10">到</span>
+			<select class="wd-110"></select>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+<script type="text/javascript" src='../js/jquery-3.1.0.js'></script>
+<script type="text/javascript" src='../plugin/layer/layer.js'></script>
+<script type="text/javascript">
+	$('#fresh').on('click',function(){
+		layer.open({
+			title: '筛选客户',
+            type: 1,
+            area: ['290px'],
+            btn: ['重置','确认', '关闭'],
+            content: $('#choice'),
+            yes: function (index) {
+                layer.close(index);
+            }
+		})
+	})
+	// 选择框checkbox类——必须有，提交信息通过获取’png-option-check‘类有几个就是选择了几个。
+	$('.png-option').on('click',function(){
+		$(this).toggleClass('png-option-check')
+	})
+</script>
+</html>
