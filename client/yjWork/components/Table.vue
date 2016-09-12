@@ -1,3 +1,7 @@
+<script>
+	
+</script>
+
 <template>
 	<table class="table-list">
 		<thead>
@@ -5,7 +9,7 @@
 				<th><a href="javascript:;" class="png-option"></a></th>
 				<th>存货编码</th>
 				<th>存货名称</th>
-				<th>规格型号</th>
+				<th>规格型号1</th>
 				<th>单位</th>
 				<th>数量</th>
 				<th>交期</th>
@@ -22,7 +26,7 @@
 				<td>100</td>
 				<td>2016-09-09</td>
 				<td>PO201606120001</td>
-			</tr>
+			</tr> 
 			<tr>
 				<td><a href="javascript:;" class="png-option"></a></td>
 				<td>BGJ-0001</td>

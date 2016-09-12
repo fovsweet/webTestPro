@@ -1,16 +1,24 @@
 <script>
-import Fresh from './Fresh.vue'
-import Table from './Table.vue'
-import $ from 'jquery'
+import Fresh from './Fresh.vue';
+import Ytable from './Table.vue';
+import List from './Lilist.vue';
 
 export default {
-	compontents :{ Fresh,Table },
-	methods :{
-		fresh(){
-			
+	components: { Fresh,Ytable,List },
+	data () {
+		return {
+
+		}
+	},
+	ready(){
+		this.todo();
+	},
+	methods:{
+		todo(){
+			console.log('this components is done')
 		},
-		option(){
-			// 选择框checkbox类——必须有，提交信息通过获取’png-option-check‘类有几个就是选择了几个。
+		fresh(){
+			console.log(123)
 		}
 	}
 }
@@ -33,12 +41,7 @@ export default {
 				</div>
 			</div>
 			<div>
-				<ul class="list_float">
-					<li><a href="javascript:;">阿里巴巴</a></li>
-					<li class="ckd"><a href="javascript:;">华为</a></li>
-					<li><a href="javascript:;">京东</a></li>
-					<li><a href="javascript:;">腾讯</a></li>
-				</ul>
+				<List></List>
 			</div>
 		</div>
 		<div class="right_list">
@@ -46,7 +49,7 @@ export default {
 				<a href="javascript:;" class="btn-def">收货</a>
 			</div>
 			<div class="overflow-box">
-				<Table></Table>
+				<Ytable></Ytable>
 			</div>
 		</div>
 	</div>
